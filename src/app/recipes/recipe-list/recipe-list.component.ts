@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RecipeService } from '../services/recipe.service';
 import { Recipe } from 'src/app/core/entities/recipe';
+import { RecipeResponse } from 'src/app/core/entities/recipeResponse';
 
 @Component({
   selector: 'app-recipe-list',
@@ -17,7 +18,7 @@ export class RecipeListComponent implements OnInit {
   }
 
   getRecipes() {
-    this.recipeService.getRecipes().subscribe ((resp: any) => {
+    this.recipeService.getRecipes().subscribe ((resp: RecipeResponse) => {
       this.recipes = resp.results;
     });
   }

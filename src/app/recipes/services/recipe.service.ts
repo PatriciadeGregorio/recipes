@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { URL_CONSTANT } from '../../core/url-constants';
 import { Observable } from 'rxjs';
+import { RecipeResponse } from 'src/app/core/entities/recipeResponse';
 
 
 @Injectable({
@@ -12,9 +13,8 @@ export class RecipeService {
   constructor(public http: HttpClient) {
    }
 
-  getRecipes(): Observable<any[]> {
-    // return this.http.get<any []>(URL_CONSTANT);
-    return this.http.get<any []>('../../../assets/mocks/recipes.json');
+  getRecipes(): Observable<RecipeResponse> {
+    return this.http.get<RecipeResponse>(URL_CONSTANT);
 
   }
 }
