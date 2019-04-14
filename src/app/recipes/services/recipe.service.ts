@@ -13,6 +13,8 @@ export class RecipeService {
    }
 
   getRecipes(): Observable<any[]> {
-    return this.http.get<any []>(URL_CONSTANT);
+    // return this.http.get<any []>(URL_CONSTANT);
+    return this.http.get<any []>('../../../assets/mocks/recipes.json');
+
   }
 }
