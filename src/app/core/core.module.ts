@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {HttpClient, HTTP_INTERCEPTORS} from '@angular/common/http';
+import {HttpClient, HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { InterceptorService } from './interceptors/interceptor.service';
@@ -14,6 +14,7 @@ export function httpLoaderFactory(httpClient: HttpClient): TranslateHttpLoader {
 @NgModule({
   imports: [
     CommonModule,
+    HttpClientModule,
     TranslateModule.forRoot({
       loader: {
           provide: TranslateLoader,
