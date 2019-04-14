@@ -15,6 +15,5 @@ export class RecipeService {
 
   getRecipes(): Observable<RecipeResponse> {
     return this.http.get<RecipeResponse>(URL_CONSTANT);
-
   }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RecipeService } from '../services/recipe.service';
 import { Recipe } from 'src/app/core/entities/recipe';
 import { RecipeResponse } from 'src/app/core/entities/recipeResponse';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-list',
@@ -10,11 +11,13 @@ import { RecipeResponse } from 'src/app/core/entities/recipeResponse';
 })
 export class RecipeListComponent implements OnInit {
   recipes: Recipe[];
+  movies: Recipe [];
 
-  constructor(public recipeService: RecipeService) { }
+  constructor(public recipeService: RecipeService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.getRecipes();
+    // this.getRecipes();
+    this.recipes = this.route.snapshot.data['recipes'].results;
   }
 
   getRecipes() {
@@ -22,6 +25,5 @@ export class RecipeListComponent implements OnInit {
       this.recipes = resp.results;
     });
   }
-
 
 }
