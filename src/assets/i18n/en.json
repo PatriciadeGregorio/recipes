@@ -1,5 +1,6 @@
 {
   "RECIPES": {
-    "INGREDIENTS": "Ingredients"
+    "INGREDIENTS": "Ingredients",
+    "TITLE": "Recipes searcher"
   }
 }

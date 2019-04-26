@@ -15,11 +15,13 @@ export class RecipeService {
   constructor(public http: HttpClient) {
    }
 
-  getRecipes(recipe?: string): Observable<RecipeResponse> {
-    recipe = (_.isUndefined(recipe) ? '' : recipe);
+  getRecipes(SearchOptions: {recipe?: string, page?: number}): Observable<RecipeResponse> {
+    SearchOptions.recipe = (_.isUndefined(SearchOptions.recipe) ? '' : SearchOptions.recipe);
+    SearchOptions.page = (_.isUndefined(SearchOptions.page) ? 1 : SearchOptions.page);
     return this.http.get<RecipeResponse>(URL_CONSTANT, {
       params: {
-        q: recipe
+        q: SearchOptions.recipe,
+        p: SearchOptions.page.toString()
       }
     });
   }

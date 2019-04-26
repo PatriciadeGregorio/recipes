@@ -12,6 +12,6 @@ export class RecipeResolverService implements Resolve <Observable<RecipeResponse
   constructor(private recipeService: RecipeService) { }
 
   resolve(): Observable<RecipeResponse> {
-    return this.recipeService.getRecipes();
+    return this.recipeService.getRecipes({recipe: '', page: 1});
   }
 }
