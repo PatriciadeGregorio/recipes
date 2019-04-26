@@ -1,28 +1,18 @@
-<nav class="navbar navbar-light bg-light justify-content-between">
-  <a class="navbar-brand hidden-sm-down hidden-xs-down"> {{ "RECIPES.TITLE" | translate }}</a>
-  <form class="form-inline">
-    <input
-    class="form-control my-0 py-1"
-    [formControl]="searchTerm"
-    type="search"
-    placeholder="Search"
-    aria-label="Search"
-  />
-    <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
-  </form>
+<nav class="navbar navbar-light bg-light justify-content-between row">
+  <a class="navbar-brand hidden-sm-down hidden-xs-down col"> {{ "RECIPES.TITLE" | translate }}</a>
+  <div class="col">
+    <form class="form-inline">
+      <input class="form-control my-0 py-1 w-100" [formControl]="searchTerm" type="search" placeholder="Search" aria-label="Search"/>
+    </form>
+  </div>
 </nav>
 
 
 
-<div
-  class="search-results"
-  infiniteScroll
-  [infiniteScrollDistance]="2"
-  [infiniteScrollThrottle]="50"
-  (scrolled)="onScroll()"
+<div class="search-results main-container" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()"
   [scrollWindow]="false"
 >
-  <ul class="list-unstyled">
+  <!-- <ul class="list-unstyled">
     <li *ngFor="let recipe of recipes" class="media my-4">
       <img [src]="recipe.thumbnail" class="mr-3" alt="..." />
       <div class="media-body">
@@ -30,5 +20,22 @@
         {{ "RECIPES.INGREDIENTS" | translate }}: {{ recipe.ingredients }}
       </div>
     </li>
-  </ul>
+  </ul> -->
+
+  <div *ngFor="let recipe of recipes" class="card card-style">
+    <div class="card-body" class="row">
+      <div class="col-3 image-container">
+        <img class="img" [src]="recipe.thumbnail ? recipe.thumbnail: 'http://img.recipepuppy.com/9.jpg'" class="float-left img" alt="Recipe image" />
+      </div>
+      <div class="col-9 pad-5">
+        <h5 class="card-title">{{recipe.title}}</h5>
+        <p class="card-text orange-border">
+          <span class="bold">
+              {{ "RECIPES.INGREDIENTS" | translate }}:
+          </span> {{ recipe.ingredients }} </p>
+      </div>
+    </div>
+  </div>
+
+
 </div>
