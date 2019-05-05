@@ -13,7 +13,7 @@ import * as _ from 'lodash';
 export class RecipeService {
 
   constructor(public http: HttpClient) {
-   }
+  }
 
   getRecipes(SearchOptions: {recipe?: string, page?: number}): Observable<RecipeResponse> {
     SearchOptions.recipe = (_.isUndefined(SearchOptions.recipe) ? '' : SearchOptions.recipe);
