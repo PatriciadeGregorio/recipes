@@ -1,6 +1,7 @@
 {
   "RECIPES": {
     "INGREDIENTS": "Ingredientes",
-    "TITLE": "Buscador de recetas"
+    "TITLE": "Buscador de recetas",
+    "NO_RECIPES": "Lo sentimos. No hay recetas con este término"
   }
 }
