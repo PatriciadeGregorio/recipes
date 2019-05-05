@@ -2,8 +2,45 @@
   height: 800px;
   overflow: scroll;
 }
-@media (max-width: 575.98px) {
 
+
+.bold {
+  font-weight: bold;
+}
+
+.align-items {
+  align-items: center;
+}
+
+.img {
+  width: 80px;
+}
+
+@media (min-width: 1024px) { //Scroll in tablets
+  .search-results {
+    height: 950px;
+    overflow: scroll;
+  }
+}
+
+@media (max-width: 320px) { //Iphone 5
+  .img {
+    width: 70px;
+  }
+}
+
+@media (min-width: 576px) { // Tablets and desktop devices
+  .margin-5 {
+    margin:5%;
+  }
+
+  .underline {
+    text-decoration: underline;
+  }
+}
+
+
+@media (max-width: 575.98px) { //Small devices (smartphones)
   .col {
     margin:3%;
   }
@@ -23,24 +60,8 @@
     box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
   }
 
-  .image-container {
-    display:flex;
-    display:-webkit-flex;
-  }
-
-  .img {
-    margin:auto;
-  }
-
-  .pad-5 {
-    padding:5%;
-  }
-
   .orange-border {
     border-top:1px solid orange;
   }
 
-  .bold {
-    font-weight: bold;
-  }
 }

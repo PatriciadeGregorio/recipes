@@ -1,4 +1,4 @@
-<nav class="navbar navbar-light bg-light justify-content-between row">
+<nav class="navbar navbar-light bg-light justify-content-between row" style="margin-bottom: 10px;">
   <a class="navbar-brand hidden-sm-down hidden-xs-down col"> {{ "RECIPES.TITLE" | translate }}</a>
   <div class="col">
     <form class="form-inline">
@@ -9,26 +9,16 @@
 
 
 
-<div class="search-results main-container" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()"
-  [scrollWindow]="false"
->
-  <!-- <ul class="list-unstyled">
-    <li *ngFor="let recipe of recipes" class="media my-4">
-      <img [src]="recipe.thumbnail" class="mr-3" alt="..." />
-      <div class="media-body">
-        <h5 class="mt-0 mb-1">{{ recipe.title }}</h5>
-        {{ "RECIPES.INGREDIENTS" | translate }}: {{ recipe.ingredients }}
-      </div>
-    </li>
-  </ul> -->
+<div class="search-results main-container margin-5" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()"
+  [scrollWindow]="false">
 
   <div *ngFor="let recipe of recipes" class="card card-style">
-    <div class="card-body" class="row">
-      <div class="col-3 image-container">
-        <img class="img" [src]="recipe.thumbnail ? recipe.thumbnail: 'http://img.recipepuppy.com/9.jpg'" class="float-left img" alt="Recipe image" />
+    <div class="card-body" class="row no-gutters d-flex justify-content-left align-items">
+      <div>
+        <img class="img" [src]="recipe.thumbnail ? recipe.thumbnail: 'http://img.recipepuppy.com/9.jpg'" class="img" alt="Recipe image" />
       </div>
-      <div class="col-9 pad-5">
-        <h5 class="card-title">{{recipe.title}}</h5>
+      <div class="p-3 w-75">
+        <h5 class="card-title underline">{{recipe.title}}</h5>
         <p class="card-text orange-border">
           <span class="bold">
               {{ "RECIPES.INGREDIENTS" | translate }}:
