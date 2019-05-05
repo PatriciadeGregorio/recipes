@@ -16,13 +16,6 @@
   width: 80px;
 }
 
-@media (min-width: 1024px) { //Scroll in tablets
-  .search-results {
-    height: 950px;
-    overflow: scroll;
-  }
-}
-
 @media (max-width: 320px) { //Iphone 5
   .img {
     width: 70px;
