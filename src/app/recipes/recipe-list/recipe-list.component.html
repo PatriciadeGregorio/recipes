@@ -1,14 +1,3 @@
-<nav class="navbar navbar-light bg-light justify-content-between row margin-bottom ">
-  <a class="navbar-brand hidden-sm-down hidden-xs-down col"> {{ "RECIPES.TITLE" | translate }}</a>
-  <div class="col">
-    <form class="form-inline">
-      <input class="form-control my-0 py-1 w-100" [formControl]="searchTerm" type="search" placeholder="Search" aria-label="Search"/>
-    </form>
-  </div>
-</nav>
-
-
-
 <div class="search-results main-container margin-5" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()"
   [scrollWindow]="false">
   <div *ngIf="!recipes.length" class="center">

@@ -6,6 +6,7 @@ import { RecipeResolverService } from './resolvers/recipe-resolver.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { RecipesComponent } from './recipes/recipes.component';
 
 
 
@@ -17,7 +18,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     ReactiveFormsModule,
     InfiniteScrollModule
   ],
-  declarations: [RecipeListComponent],
+  declarations: [RecipeListComponent, RecipesComponent],
   providers: [RecipeService, RecipeResolverService]
 })
 export class RecipesModule { }
