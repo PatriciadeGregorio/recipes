@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { debounceTime } from 'rxjs/operators';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-recipes',
@@ -8,19 +6,19 @@ import { debounceTime } from 'rxjs/operators';
   styleUrls: ['./recipes.component.scss']
 })
 export class RecipesComponent {
-  searchTerm: FormControl = new FormControl();
   searchRecipe = '';
 
 
   constructor() {
-    this.search();
+
   }
 
-  search() {
-    this.searchTerm.valueChanges.pipe(debounceTime(400))
-    .subscribe((data: string) => {
-      this.searchRecipe = data;
-    });
+  onSearch(searchTerm) {
+    if (typeof(searchTerm) === 'string') {
+      this.searchRecipe = searchTerm;
+    }
   }
+
+
 
 }
