@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { RecipeService } from '../services/recipe.service';
 import { Recipe } from 'src/app/core/entities/recipe';
 import { RecipeResponse } from 'src/app/core/entities/recipeResponse';
@@ -16,6 +16,7 @@ export class RecipesComponent implements OnInit {
   page = 1;
   recipes: Recipe[];
   keepPagination = true;
+  @ViewChild('scroll-list') scrollList: ElementRef;
 
   constructor(public recipeService: RecipeService, private route: ActivatedRoute) {}
 
@@ -35,11 +36,11 @@ export class RecipesComponent implements OnInit {
     }
   }
 
-  onPagination(page) {
+  onPagination() {
     if (this.keepPagination) {
-      this.page = page;
+      this.page ++;
       this.recipeService.getRecipes({ recipe: this.searchRecipe, page: this.page }).subscribe((resp: RecipeResponse) => {
-        this.keepPagination = resp.results.length === this.SIZE_PAGE;
+        this.keepPagination = (resp.results.length === this.SIZE_PAGE);
           this.recipes = this.recipes.concat(resp.results);
         });
     }
@@ -49,5 +50,6 @@ export class RecipesComponent implements OnInit {
     this.recipes = [];
     this.page = 1;
     this.keepPagination = true;
+    // this.scrollList.nativeElement.scrollTo(0, 0);
   }
 }

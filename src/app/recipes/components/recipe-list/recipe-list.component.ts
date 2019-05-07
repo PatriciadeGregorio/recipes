@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { RecipeService } from '../../services/recipe.service';
 import { Recipe } from 'src/app/core/entities/recipe';
 
@@ -8,17 +8,13 @@ import { Recipe } from 'src/app/core/entities/recipe';
   styleUrls: ['./recipe-list.component.scss']
 })
 export class RecipeListComponent {
-  numberPage = 1;
   @Input() recipes: Recipe[];
-  @Output()pagination = new EventEmitter<number>();
+  @Output() pagination = new EventEmitter<number>();
 
+  constructor(public recipeService: RecipeService) {}
 
-  constructor(public recipeService: RecipeService) {
-  }
 
   onScroll() {
-    this.numberPage++;
-    this.pagination.emit(this.numberPage);
-
+    this.pagination.emit();
   }
 }
