@@ -1,2 +1,2 @@
 <app-search (search)="onSearch($event)"></app-search>
-<app-recipe-list [search]="searchRecipe"></app-recipe-list>
+<app-recipe-list [recipes]="recipes" (pagination)="onPagination($event)"></app-recipe-list>
