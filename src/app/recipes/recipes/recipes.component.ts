@@ -16,7 +16,6 @@ export class RecipesComponent implements OnInit {
   page = 1;
   recipes: Recipe[];
   keepPagination = true;
-  @ViewChild('scroll-list') scrollList: ElementRef;
 
   constructor(public recipeService: RecipeService, private route: ActivatedRoute) {}
 
@@ -50,6 +49,5 @@ export class RecipesComponent implements OnInit {
     this.recipes = [];
     this.page = 1;
     this.keepPagination = true;
-    // this.scrollList.nativeElement.scrollTo(0, 0);
   }
 }
