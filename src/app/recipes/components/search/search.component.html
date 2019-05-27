@@ -1,5 +1,5 @@
 <nav class="navbar navbar-light bg-light justify-content-between row margin-bottom ">
-  <a class="navbar-brand hidden-sm-down hidden-xs-down col"> {{ "RECIPES.TITLE" | translate }}</a>
+  <a (click)="increment()" class="navbar-brand hidden-sm-down hidden-xs-down col"> {{ "RECIPES.TITLE" | translate }}</a>
   <div class="col">
     <form class="form-inline">
       <input class="form-control my-0 py-1 w-100" [formControl]="searchTerm" type="search" placeholder="Search" aria-label="Search"/>

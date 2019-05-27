@@ -1,2 +1,3 @@
 <app-search (search)="onSearch($event)"></app-search>
+<span> Count: {{ count$ | async}}</span>
 <app-recipe-list [recipes]="recipes" (pagination)="onPagination($event)"></app-recipe-list>

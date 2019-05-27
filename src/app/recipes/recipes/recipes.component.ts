@@ -4,6 +4,8 @@ import { Recipe } from 'src/app/core/entities/recipe';
 import { RecipeResponse } from 'src/app/core/entities/recipeResponse';
 import { ActivatedRoute } from '@angular/router';
 import * as _ from 'lodash';
+import { Observable } from 'rxjs';
+import { Store, select } from '@ngrx/store';
 
 @Component({
   selector: 'app-recipes',
@@ -16,8 +18,12 @@ export class RecipesComponent implements OnInit {
   page = 1;
   recipes: Recipe[];
   keepPagination = true;
+  count$: Observable<number>;
 
-  constructor(public recipeService: RecipeService, private route: ActivatedRoute) {}
+  constructor(public recipeService: RecipeService, private route: ActivatedRoute,
+    private store: Store<{ count: number }>) {
+    this.count$ = this.store.pipe(select('count'));
+  }
 
   ngOnInit() {
     this.recipes = this.route.snapshot.data['recipes'].results;
