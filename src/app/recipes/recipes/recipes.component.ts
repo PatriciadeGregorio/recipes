@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import * as _ from 'lodash';
 import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
+import { GetRecipes } from 'src/app/stores/recipes.actions';
 
 @Component({
   selector: 'app-recipes',
@@ -17,25 +18,37 @@ export class RecipesComponent implements OnInit {
   searchRecipe = '';
   page = 1;
   recipes: Recipe[];
+  recipes$: Observable<Recipe[]>;
   keepPagination = true;
   count$: Observable<number>;
 
-  constructor(public recipeService: RecipeService, private route: ActivatedRoute,
-    private store: Store<{ count: number }>) {
+  constructor(
+    public recipeService: RecipeService,
+    private route: ActivatedRoute,
+    private store: Store<{ count: number }>
+  ) {
     this.count$ = this.store.pipe(select('count'));
+    this.recipes$ = this.store.pipe(select('recipes'));
   }
 
   ngOnInit() {
-    this.recipes = this.route.snapshot.data['recipes'].results;
+    // this.recipes = this.route.snapshot.data['recipes'].results;
+    this.store.dispatch(new GetRecipes());
+    this.recipes$.subscribe((resp: any) => {
+      this.recipes = resp.recipes;
+      console.log(resp.recipes);
+    });
   }
 
   onSearch(searchTerm) {
     if (typeof searchTerm === 'string') {
       this.searchRecipe = searchTerm;
       if (!_.isUndefined(this.searchRecipe)) {
-        this.recipeService.getRecipes({ recipe: this.searchRecipe }).subscribe((resp: RecipeResponse) => {
+        this.recipeService
+          .getRecipes({ recipe: this.searchRecipe })
+          .subscribe((resp: RecipeResponse) => {
             this.initializeData();
-            this.recipes = resp.results;
+            // this.recipes = resp.results;
           });
       }
     }
@@ -43,10 +56,12 @@ export class RecipesComponent implements OnInit {
 
   onPagination() {
     if (this.keepPagination) {
-      this.page ++;
-      this.recipeService.getRecipes({ recipe: this.searchRecipe, page: this.page }).subscribe((resp: RecipeResponse) => {
-        this.keepPagination = (resp.results.length === this.SIZE_PAGE);
-          this.recipes = this.recipes.concat(resp.results);
+      this.page++;
+      this.recipeService
+        .getRecipes({ recipe: this.searchRecipe, page: this.page })
+        .subscribe((resp: RecipeResponse) => {
+          this.keepPagination = resp.results.length === this.SIZE_PAGE;
+          // this.recipes = this.recipes.concat(resp.results);
         });
     }
   }

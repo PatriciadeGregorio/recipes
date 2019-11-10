@@ -3,7 +3,7 @@ import { Action } from '@ngrx/store';
 export enum ActionTypes {
   Increment = 'Increment',
   Decrement = 'Decrement',
-  Reset = 'Reset',
+  Reset = 'Reset'
 }
 
 export class Increment implements Action {
