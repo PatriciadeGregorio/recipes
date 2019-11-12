@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
 
 @Component({
@@ -9,20 +9,23 @@ import { debounceTime } from 'rxjs/operators';
 })
 export class SearchComponent implements OnInit {
   searchTerm: FormControl = new FormControl();
-  @Output()search = new EventEmitter<string>();
+  pruebaForm: FormGroup;
+  @Output() search = new EventEmitter<string>();
 
   constructor() {
+    this.pruebaForm = new FormGroup({
+      searchTerm: new FormControl('')
+    });
     this.searching();
-   }
-
-  ngOnInit() {
   }
+
+  ngOnInit() {}
 
   searching() {
-    this.searchTerm.valueChanges.pipe(debounceTime(400))
-    .subscribe((data: string) => {
-      this.search.emit(data);
-    });
+    this.searchTerm.valueChanges
+      .pipe(debounceTime(400))
+      .subscribe((data: string) => {
+        this.search.emit(data);
+      });
   }
-
 }

@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { RecipesComponent } from './recipes/recipes.component';
 import { SearchComponent } from './components/search/search.component';
+import { CustomInputComponent } from './components/custom-input/custom-input.component';
 
 
 
@@ -19,7 +20,7 @@ import { SearchComponent } from './components/search/search.component';
     ReactiveFormsModule,
     InfiniteScrollModule
   ],
-  declarations: [RecipeListComponent, RecipesComponent, SearchComponent],
+  declarations: [RecipeListComponent, RecipesComponent, SearchComponent, CustomInputComponent],
   providers: [RecipeService, RecipeResolverService]
 })
 export class RecipesModule { }
